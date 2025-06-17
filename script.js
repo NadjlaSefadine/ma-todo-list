@@ -1,9 +1,8 @@
 let inputField = document.getElementById("inputField");
 let tasks = document.getElementById("tasks");
-console.log(tasks);
+//console.log(tasks);
 
-
-const addTasks = () => {
+const addTask = () => {
     let task = inputField.value.trim();
     const li = document.createElement("li");
 li.innerHTML = `
@@ -19,12 +18,21 @@ tasks.appendChild(li);
 inputField.value = "";
 //console.log(li);
 
-const checkbox =li.querySelector("input");
-
-//const.log(tasks);
+const checkbox = li.querySelector("input");
+let span1 = li.querySelector("span");
+const editBtn = li.querySelector(".editBtn");
+//console.log(checkbox);
 checkbox.addEventListener("Click",() => {
-    let span1 = li.querySelector("span")
-    span1.classList.toggle("checked",checkbox.checked);
-    console.log(span1.classlist);
+    span1.classList.toggle("checked");
+    console.log(span1.classList);
 });
+
+editBtn.addEventListener("click",function(){;
+   const taskupdate = prompt("editer tache:",span1.textContent);
+   if (taskupddate !== null){
+  span1.textcontent = taskupdate;
+  checkbox.checked = false;
+  span1.classList.remove("checked");
 }
+})
+};
