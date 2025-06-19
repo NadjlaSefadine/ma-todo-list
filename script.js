@@ -18,13 +18,12 @@ const addTask = () => {
     tasks.appendChild(li);
     inputField.value = "";
     //console.log(li);
-
     const checkbox = li.querySelector("input");
     let span1 = li.querySelector("span");
     const editBtn = li.querySelector(".editBtn");
     const deleteBtn = li.querySelector(".deletBtn");
 
-    console.log(deleteBtn);
+    //console.log(deletBtn);
     checkbox.addEventListener("click", () => {
         span1.classList.toggle("checked");
         console.log(span1.classList);
@@ -43,7 +42,6 @@ const addTask = () => {
         counter();
     });
 
-
     deleteBtn.addEventListener("click", function () {
         if (confirm("Êtes-vous sûr de vouloir tout effacer?")) {
             li.remove();
@@ -58,9 +56,25 @@ const addTask = () => {
 }
 
 
-const counter = () => {
+const deletall = document.getElementById("clear-all");
+deletall.addEventListener("click", function () {
+    if (confirm("Voulez vous tout effacer?")) {
+        tasks.innerHTML = "";
+        Counter();
+    }
+})
+
+    
+
+const Counter = () => {
     let completedTasks = document.querySelectorAll(".checked").length;
     let compteur = document.getElementById("CompletedCounter");
     compteur.innerText = completedTasks;
+    const taches = document.querySelectorAll("li>label>span:not(.checked)").length;
+    document.querySelector("#pendingCounter").textContent = taches;
+
+    
 }
-counter();
+
+Counter();
+
